@@ -22,16 +22,21 @@ if (queryForm) {
     event.preventDefault();
 
     const name = document.getElementById('q-name').value.trim();
+    const email = document.getElementById('q-email').value.trim();
     const country = document.getElementById('q-country').value.trim();
     const category = document.getElementById('q-category').value;
     const deadline = document.getElementById('q-deadline').value;
     const goal = document.getElementById('q-goal').value.trim();
     const details = document.getElementById('q-details').value.trim();
 
-    const message = [
-      'Hi InfoNext UK, I would like to submit a query.',
+    const subject = 'InfoNext UK enquiry - ' + category;
+    const body = [
+      'Hello InfoNext UK,',
       '',
-      'Name: ' + name,
+      'I would like to submit a query.',
+      '',
+      'Full name: ' + name,
+      'Email: ' + email,
       'Country: ' + country,
       'Category: ' + category,
       'Deadline: ' + deadline,
@@ -42,9 +47,13 @@ if (queryForm) {
       'Key facts:',
       details,
       '',
-      'I have read the Terms & Conditions and Privacy Notice.'
+      'I have read and agree to the Terms & Conditions and acknowledge the Privacy Notice.',
+      '',
+      'I understand that submitting this enquiry does not include a substantive answer. Please confirm the appropriate service, total price and expected delivery time before I decide whether to proceed.'
     ].join('\n');
 
-    window.open('https://wa.me/447345676448?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    window.location.href =
+      'mailto:hello@infonextuk.co.uk?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
   });
 }
