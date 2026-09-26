@@ -17,43 +17,69 @@ const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
 const queryForm = document.getElementById('query-form');
+const queryStatus = document.getElementById('query-status');
+const querySubmit = document.getElementById('query-submit');
+
+function showStatus(message, type) {
+  if (!queryStatus) return;
+  queryStatus.textContent = message;
+  queryStatus.className = 'query-status show ' + type;
+}
+
 if (queryForm) {
-  queryForm.addEventListener('submit', (event) => {
+  queryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const name = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const country = document.getElementById('q-country').value.trim();
-    const category = document.getElementById('q-category').value;
-    const deadline = document.getElementById('q-deadline').value;
-    const goal = document.getElementById('q-goal').value.trim();
-    const details = document.getElementById('q-details').value.trim();
+    if (!queryForm.checkValidity()) {
+      queryForm.reportValidity();
+      return;
+    }
 
-    const subject = 'InfoNext UK enquiry - ' + category;
-    const body = [
-      'Hello InfoNext UK,',
-      '',
-      'I would like to submit a query.',
-      '',
-      'Full name: ' + name,
-      'Email: ' + email,
-      'Country: ' + country,
-      'Category: ' + category,
-      'Deadline: ' + deadline,
-      '',
-      'What I am trying to achieve:',
-      goal,
-      '',
-      'Key facts:',
-      details,
-      '',
-      'I have read and agree to the Terms & Conditions and acknowledge the Privacy Notice.',
-      '',
-      'I understand that submitting this enquiry does not include a substantive answer. Please confirm the appropriate service, total price and expected delivery time before I decide whether to proceed.'
-    ].join('\n');
+    const reference = 'INX-' + Date.now().toString().slice(-8);
+    const payload = {
+      _subject: 'New InfoNext UK enquiry - ' + reference,
+      _template: 'table',
+      Reference: reference,
+      Name: document.getElementById('q-name').value.trim(),
+      Email: document.getElementById('q-email').value.trim(),
+      Country: document.getElementById('q-country').value.trim(),
+      Category: document.getElementById('q-category').value,
+      Deadline: document.getElementById('q-deadline').value,
+      Goal: document.getElementById('q-goal').value.trim(),
+      'Key facts': document.getElementById('q-details').value.trim(),
+      'Terms accepted': 'Yes'
+    };
 
-    window.location.href =
-      'mailto:hello@infonextuk.co.uk?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
+    querySubmit.disabled = true;
+    querySubmit.textContent = 'Submitting...';
+    showStatus('Submitting your enquiry securely...', 'loading');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/hello@infonextuk.co.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      showStatus(
+        'Thank you. Your enquiry has been submitted. Your reference is ' + reference +
+        '. We will review the scope and contact you by email with the service, price and expected delivery time.',
+        'success'
+      );
+      queryForm.reset();
+    } catch (error) {
+      showStatus(
+        'We could not submit the form just now. Please try again. If the problem continues, use the WhatsApp button at the bottom of the page.',
+        'error'
+      );
+    } finally {
+      querySubmit.disabled = false;
+      querySubmit.textContent = 'Submit query';
+    }
   });
 }
