@@ -40,7 +40,7 @@
           <p class="hero-lead">Before spending hours searching or paying for a consultant, agency or specialist, start with InfoNext UK. Whether you are already in the UK or planning to visit, study, work or settle here, tell us what you are trying to solve. We research the information, organise the options and help you understand the practical next step.</p>
           <p class="hero-sub">If your question can be handled through reliable information and practical support, we help you do that. If it genuinely needs an authorised professional, we help you arrive prepared so you can use their time more efficiently.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/447345676448?text=Hi%20InfoNext%20UK%2C%20I%20have%20a%20question%20about..." target="_blank" rel="noopener">Ask on WhatsApp</a>
+            <a class="btn btn-primary" href="#contact">Submit a query</a>
             <a class="btn btn-secondary" href="#pricing">See prices</a>
           </div>
           <div class="launch-pill"><strong>Launch offer:</strong> First Quick Answer £2.99 <span>Normally £5.99</span></div>
@@ -91,7 +91,7 @@
         <div class="section-heading">
           <span class="eyebrow">Simple pricing</span>
           <h2>Pay for the problem, not unnecessary time.</h2>
-          <p>Submit the question first so we can identify the correct service. We then confirm the exact price. No substantive answer, research or paid work begins until payment has been received.</p>
+          <p>Submit the question first so we can identify the correct service. For Quick Answers, we may prepare the answer first and release the full response after payment. For Research & Options, Action Plans and other larger services, the price is confirmed and payment is received before substantive work begins.</p>
         </div>
 
         <div class="offer-banner">
@@ -129,7 +129,7 @@
             <p>Discuss your situation directly with us and work through the practical next steps.</p>
           </div>
           <div class="video-prices"><span><b>30 min</b> £25</span><span><b>60 min</b> £50</span></div>
-          <a class="btn btn-light" href="https://wa.me/447345676448?text=Hi%20InfoNext%20UK%2C%20I%20would%20like%20to%20book%20a%20video%20consultation." target="_blank" rel="noopener">Book by WhatsApp</a>
+          <a class="btn btn-light" href="#contact">Request consultation</a>
         </div>
       </div>
     </section>
@@ -169,7 +169,7 @@
           <article class="payment-card"><span>1</span><h3>Submit the question</h3><p>Tell us the essential facts, what you want to achieve and any deadline.</p></article>
           <article class="payment-card"><span>2</span><h3>Receive the exact price</h3><p>We confirm the service, total InfoNext UK price and expected delivery time before you decide.</p></article>
           <article class="payment-card"><span>3</span><h3>Pay securely</h3><p>If you want to proceed, we send a secure payment link. We do not add hidden booking, card-processing or administration charges at checkout.</p></article>
-          <article class="payment-card"><span>4</span><h3>Work begins after payment</h3><p>Only after successful payment do we begin the substantive answer, research, action plan or agreed support.</p></article>
+          <article class="payment-card"><span>4</span><h3>Receive the agreed service</h3><p>Quick Answers can be released as soon as payment is completed. Larger research, action-plan and support services begin after successful payment.</p></article>
         </div>
         <div class="payment-promise">
           <strong>Our pricing promise</strong>
@@ -184,8 +184,8 @@
         <div class="steps">
           <div class="step"><span>1</span><h3>Submit your question</h3><p>Give us the essential facts, what you want to achieve and any important deadline.</p></div>
           <div class="step"><span>2</span><h3>Price confirmed</h3><p>We confirm the service, total price and expected delivery time. No substantive answer is provided at this stage.</p></div>
-          <div class="step"><span>3</span><h3>Secure payment</h3><p>If you proceed, payment is completed before research, analysis or substantive support begins.</p></div>
-          <div class="step"><span>4</span><h3>Answer & next steps</h3><p>We complete the agreed work. Where regulated advice is required, we explain the appropriate professional route.</p></div>
+          <div class="step"><span>3</span><h3>Secure payment</h3><p>Quick Answers may already be prepared and are released after payment. Larger services start once payment is confirmed.</p></div>
+          <div class="step"><span>4</span><h3>Answer & next steps</h3><p>You receive the agreed response or completed work. Where regulated advice is required, we explain the appropriate professional route.</p></div>
         </div>
       </div>
     </section>
@@ -216,7 +216,7 @@
         </div>
 
         <div class="query-layout">
-          <form id="query-form" class="query-form">
+          <form id="query-form" class="query-form" novalidate>
             <div class="form-grid">
               <label>Full name
                 <input id="q-name" name="name" autocomplete="name" required />
@@ -271,22 +271,20 @@
               <span>I have read and agree to the <a href="terms.html">Terms & Conditions</a> and acknowledge the <a href="privacy.html">Privacy Notice</a>.</span>
             </label>
 
-            <button class="btn btn-primary btn-full" type="submit">Submit query by email</button>
-            <small>This prepares a structured email to hello@infonextuk.co.uk using the details above. The website itself does not store your completed form.</small>
+            <button id="query-submit" class="btn btn-primary btn-full" type="submit">Submit query</button>
+            <div id="query-status" class="query-status" role="status" aria-live="polite"></div>
+            <small>Your enquiry is submitted directly from this page. You do not need to open email or WhatsApp. Please keep sensitive documents out of the initial enquiry.</small>
           </form>
 
           <aside class="query-side">
             <div class="query-side-card">
               <h3>What happens next?</h3>
-              <div><b>1</b><span>We read the information you submit.</span></div>
+              <div><b>1</b><span>Your enquiry arrives directly with InfoNext UK.</span></div>
               <div><b>2</b><span>We email you the service, total price and expected delivery time.</span></div>
               <div><b>3</b><span>If you want to proceed, you pay through the secure payment link we send.</span></div>
-              <div><b>4</b><span>After payment is confirmed, we begin the substantive answer, research or support.</span></div>
+              <div><b>4</b><span>Quick Answers are released after payment; larger services then begin as agreed.</span></div>
             </div>
             <div class="social-icon-row" aria-label="InfoNext UK social links">
-              <a class="social-icon whatsapp-icon" href="https://wa.me/447345676448" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20.2l1.1-4A8.4 8.4 0 1 1 20.5 11.7Z"/><path d="M9 8.1c.3-.7.6-.7.9-.7h.5c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.7c-.2.2-.2.4 0 .7.4.7 1 1.4 1.7 1.9.8.6 1.5.8 1.8.9.3.1.5 0 .7-.2l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .3-.2 1.3-.8 1.8-.5.5-1.3.8-2 .8-.6 0-1.5-.2-2.8-.8a10.7 10.7 0 0 1-3.6-2.5c-1-1-1.8-2.2-2.1-3.1-.4-1-.4-1.8-.1-2.4Z"/></svg>
-              </a>
               <a class="social-icon facebook-icon" href="https://www.facebook.com/share/1JmBZc68DW/" target="_blank" rel="noopener" aria-label="Facebook">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.2l.8-4H13V9c0-.8.3-1 1-1Z"/></svg>
               </a>
@@ -297,7 +295,8 @@
           </aside>
         </div>
       </div>
-    </section>  </main>
+    </section>
+  </main>
 
   <a class="whatsapp-float icon-only whatsapp-icon" href="https://wa.me/447345676448?text=Hi%20InfoNext%20UK%2C%20I%20need%20help%20with..." target="_blank" rel="noopener" aria-label="Message InfoNext UK on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20.2l1.1-4A8.4 8.4 0 1 1 20.5 11.7Z"/><path d="M9 8.1c.3-.7.6-.7.9-.7h.5c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.7c-.2.2-.2.4 0 .7.4.7 1 1.4 1.7 1.9.8.6 1.5.8 1.8.9.3.1.5 0 .7-.2l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .3-.2 1.3-.8 1.8-.5.5-1.3.8-2 .8-.6 0-1.5-.2-2.8-.8a10.7 10.7 0 0 1-3.6-2.5c-1-1-1.8-2.2-2.1-3.1-.4-1-.4-1.8-.1-2.4Z"/></svg></a>
 
@@ -311,7 +310,6 @@
       </div>
       <div class="footer-right">
         <div class="social-icon-row footer-icons">
-          <a class="social-icon whatsapp-icon" href="https://wa.me/447345676448" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20.2l1.1-4A8.4 8.4 0 1 1 20.5 11.7Z"/><path d="M9 8.1c.3-.7.6-.7.9-.7h.5c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.7c-.2.2-.2.4 0 .7.4.7 1 1.4 1.7 1.9.8.6 1.5.8 1.8.9.3.1.5 0 .7-.2l.8-1c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .3-.2 1.3-.8 1.8-.5.5-1.3.8-2 .8-.6 0-1.5-.2-2.8-.8a10.7 10.7 0 0 1-3.6-2.5c-1-1-1.8-2.2-2.1-3.1-.4-1-.4-1.8-.1-2.4Z"/></svg></a>
           <a class="social-icon facebook-icon" href="https://www.facebook.com/share/1JmBZc68DW/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.2l.8-4H13V9c0-.8.3-1 1-1Z"/></svg></a>
           <a class="social-icon instagram-icon" href="https://www.instagram.com/infonextuk?stkn=ajF6cmppcjl5b3Bp" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r="1"/></svg></a>
         </div>
