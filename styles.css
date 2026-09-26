@@ -42,3 +42,13 @@
 .social-icon.whatsapp-icon,.whatsapp-float.whatsapp-icon{background:#25D366;border-color:#25D366;color:#fff}.social-icon.facebook-icon{background:#1877F2;border-color:#1877F2;color:#fff}.social-icon.instagram-icon{background:linear-gradient(135deg,#833AB4,#E1306C 52%,#FCAF45);border-color:transparent;color:#fff}.social-icon.whatsapp-icon:hover,.social-icon.facebook-icon:hover,.social-icon.instagram-icon:hover{filter:brightness(.96);border-color:transparent}.whatsapp-float.whatsapp-icon{box-shadow:0 12px 28px rgba(37,211,102,.28)}
 @media(max-width:900px){.payment-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.payment-grid{grid-template-columns:1fr}}
+
+
+/* Final enquiry submission states */
+.query-status{display:none;border-radius:12px;padding:13px 15px;font-size:14px;font-weight:700}
+.query-status.show{display:block}
+.query-status.success{background:#eafaf3;border:1px solid #bce8d2;color:#176743}
+.query-status.error{background:#fff2f2;border:1px solid #efc8c8;color:#9d2d2d}
+.query-status.loading{background:#eef7ff;border:1px solid #c9e0f3;color:#1d5d8f}
+.query-form button[disabled]{opacity:.65;cursor:wait}
+.social-icon-row:not(.footer-icons){margin-top:2px}
