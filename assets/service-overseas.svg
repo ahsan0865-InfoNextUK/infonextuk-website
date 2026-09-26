@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-label="UK Visit, Study & Work Preparation">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edfaff"/><stop offset="1" stop-color="#bde9e5"/></linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#082d69" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="960" height="620" rx="38" fill="url(#g)"/>
+  <circle cx="810" cy="90" r="140" fill="#fff" opacity=".12"/>
+  <circle cx="120" cy="540" r="190" fill="#fff" opacity=".09"/>
+  <rect x="135" y="105" width="690" height="410" rx="34" fill="#fff" opacity=".96" filter="url(#s)"/>
+  <rect x="185" y="155" width="260" height="18" rx="9" fill="#dbeaf6"/>
+  <rect x="185" y="193" width="360" height="14" rx="7" fill="#eef5fa"/>
+  <rect x="185" y="224" width="315" height="14" rx="7" fill="#eef5fa"/>
+  <rect x="185" y="285" width="255" height="145" rx="24" fill="#f4f9fd"/>
+  <rect x="470" y="285" width="300" height="32" rx="16" fill="#edf6fb"/>
+  <rect x="470" y="337" width="248" height="22" rx="11" fill="#eef5fa"/>
+  <rect x="470" y="376" width="270" height="22" rx="11" fill="#eef5fa"/>
+  <rect x="470" y="430" width="150" height="42" rx="21" fill="#bde9e5" opacity=".9"/>
+  <text x="312" y="382" text-anchor="middle" font-size="96" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">✈️</text>
+  <text x="185" y="485" font-size="21" font-weight="700" font-family="Arial,sans-serif" fill="#0a376f">UK Visit, Study & Work Preparation</text>
+</svg>
