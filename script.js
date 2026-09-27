@@ -42,6 +42,7 @@ if (queryForm) {
       Reference: reference,
       Name: document.getElementById('q-name').value.trim(),
       Email: document.getElementById('q-email').value.trim(),
+      Phone: document.getElementById('q-phone').value.trim(),
       Country: document.getElementById('q-country').value.trim(),
       Category: document.getElementById('q-category').value,
       Deadline: document.getElementById('q-deadline').value,
