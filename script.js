@@ -1,3 +1,7 @@
+// Paste the deployed Google Apps Script web-app URL here after setup.
+// Leave blank until the Sheet webhook is deployed. FormSubmit email delivery still works.
+const GOOGLE_SHEETS_WEBHOOK = '';
+
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav-links');
 
@@ -50,6 +54,13 @@ if (queryForm) {
       'Key facts': document.getElementById('q-details').value.trim(),
       'Terms accepted': 'Yes'
     };
+
+    // FormSubmit can forward every successful enquiry to the Google Sheets
+    // Apps Script webhook. This keeps email delivery and the live query dashboard
+    // in sync without moving the customer away from the website.
+    if (GOOGLE_SHEETS_WEBHOOK) {
+      payload._webhook = GOOGLE_SHEETS_WEBHOOK;
+    }
 
     querySubmit.disabled = true;
     querySubmit.textContent = 'Submitting...';
