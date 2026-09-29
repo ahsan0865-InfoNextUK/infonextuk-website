@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://infonextuk.co.uk/sitemap.xml
