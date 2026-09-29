@@ -1,6 +1,6 @@
 // Paste the deployed Google Apps Script web-app URL here after setup.
 // Leave blank until the Sheet webhook is deployed. FormSubmit email delivery still works.
-const GOOGLE_SHEETS_WEBHOOK = '';
+const GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwSu_b0a9BANRMOWPOZ_ETMpqSJt4lp8VTsQhVD6ZT6Z-KrOrR1LfU0Tn90xOacnlyWPQ/exec';
 
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav-links');
