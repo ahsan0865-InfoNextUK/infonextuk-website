@@ -82,8 +82,6 @@
 /* Service photos and understated disclosures */
 .service-detail-picture{position:relative;background:#eaf2f7;aspect-ratio:16/10}
 .service-detail-picture img{width:100%;height:100%;object-fit:cover}
-.photo-credit{font-size:10px;color:#8291a0;margin-top:7px;text-align:right}
-.photo-credit a{color:inherit;text-decoration:underline}
 .service-boundary{margin:42px 0 0;padding:16px 0 0;border:0;border-top:1px solid #dce5ec;border-radius:0;background:transparent;color:#778797;font-size:12px;line-height:1.55}
 .service-boundary h3{font-size:12px!important;text-transform:uppercase;letter-spacing:.08em;color:#607386!important;margin:0 0 5px!important}
 .service-boundary p{margin:0}
@@ -99,5 +97,4 @@
 /* Homepage service photography */
 .service-card-image{width:calc(100% + 48px);height:150px;object-fit:cover;margin:-24px -24px 18px;border-radius:18px 18px 0 0;background:#edf4f8}
 .service-photo-note{margin:18px 0 0;color:#8190a0;font-size:10px;text-align:right}
-.service-photo-wrap{min-width:0}
 @media(max-width:620px){.service-card-image{height:170px}}
