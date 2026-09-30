@@ -215,3 +215,17 @@ function sendNotificationEmail_(data, reference, deadline, priority) {
 
   MailApp.sendEmail(message);
 }
+
+
+/**
+ * Run this once manually in Apps Script after adding the email notification code.
+ * It triggers Google's permission prompt for MailApp and sends a test message.
+ */
+function testEmailSetup() {
+  MailApp.sendEmail({
+    to: 'hello@infonextuk.co.uk',
+    subject: 'InfoNext UK website email test',
+    body: 'Email notifications from the InfoNext UK enquiry form are now authorised and working.',
+    name: 'InfoNext UK Website'
+  });
+}
