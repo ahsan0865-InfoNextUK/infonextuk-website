@@ -91,6 +91,8 @@ function doPost(e) {
       ''
     ]);
 
+    sendNotificationEmail_(data, reference, deadline, priority);
+
     return json_({ ok: true, reference: reference });
   } catch (err) {
     console.error(err);
@@ -174,4 +176,42 @@ function json_(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+
+function sendNotificationEmail_(data, reference, deadline, priority) {
+  const customerEmail = text_(data.Email || data.email);
+  const lines = [
+    'New InfoNext UK enquiry',
+    '',
+    'Reference: ' + reference,
+    'Name: ' + text_(data.Name || data.name),
+    'Email: ' + customerEmail,
+    'Phone: ' + text_(data.Phone || data.phone),
+    'Country: ' + text_(data.Country || data.country),
+    'Category: ' + text_(data.Category || data.category),
+    'Deadline: ' + deadline,
+    'Priority: ' + priority,
+    '',
+    'Goal:',
+    text_(data.Goal || data.goal),
+    '',
+    'Key facts:',
+    text_(data['Key facts'] || data['key facts'] || data.details),
+    '',
+    'Form URL: ' + text_(data['Form URL'] || data.formUrl)
+  ];
+
+  const message = {
+    to: 'hello@infonextuk.co.uk',
+    subject: 'New InfoNext UK enquiry - ' + reference,
+    body: lines.join('\n'),
+    name: 'InfoNext UK Website'
+  };
+
+  if (customerEmail) {
+    message.replyTo = customerEmail;
+  }
+
+  MailApp.sendEmail(message);
 }
