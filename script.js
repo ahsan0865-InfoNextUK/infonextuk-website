@@ -43,6 +43,8 @@ if (queryForm) {
     const payload = {
       _subject: 'New InfoNext UK enquiry - ' + reference,
       _template: 'table',
+      _url: window.location.origin + window.location.pathname,
+      _replyto: document.getElementById('q-email').value.trim(),
       Reference: reference,
       Name: document.getElementById('q-name').value.trim(),
       Email: document.getElementById('q-email').value.trim(),
@@ -76,7 +78,17 @@ if (queryForm) {
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) throw new Error('Submission failed');
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch (_) {
+        // Some FormSubmit error responses are HTML rather than JSON.
+      }
+
+      if (!response.ok || (responseData && responseData.success === false)) {
+        const detail = responseData && responseData.message ? responseData.message : 'Submission failed';
+        throw new Error(detail);
+      }
 
       showStatus(
         'Thank you. Your enquiry has been submitted. Your reference is ' + reference +
@@ -85,8 +97,9 @@ if (queryForm) {
       );
       queryForm.reset();
     } catch (error) {
+      console.error('InfoNext UK form submission error:', error);
       showStatus(
-        'We could not submit the form just now. Please try again. If the problem continues, use the WhatsApp button at the bottom of the page.',
+        'We could not submit the form just now. If this is the first test, please check hello@infonextuk.co.uk (including spam) for the one-time FormSubmit activation email, activate the form, then try again. If it is already activated, please use the WhatsApp button and we will investigate.',
         'error'
       );
     } finally {
