@@ -57,13 +57,6 @@ if (queryForm) {
       'Terms accepted': 'Yes'
     };
 
-    // FormSubmit can forward every successful enquiry to the Google Sheets
-    // Apps Script webhook. This keeps email delivery and the live query dashboard
-    // in sync without moving the customer away from the website.
-    if (GOOGLE_SHEETS_WEBHOOK) {
-      payload._webhook = GOOGLE_SHEETS_WEBHOOK;
-    }
-
     querySubmit.disabled = true;
     querySubmit.textContent = 'Submitting...';
     showStatus('Submitting your enquiry securely...', 'loading');
@@ -90,6 +83,21 @@ if (queryForm) {
         throw new Error(detail);
       }
 
+      // Save the same enquiry to the Google Sheets dashboard separately.
+      // Using a no-cors text POST avoids cross-origin preflight issues with Apps Script.
+      if (GOOGLE_SHEETS_WEBHOOK) {
+        try {
+          await fetch(GOOGLE_SHEETS_WEBHOOK, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (sheetError) {
+          console.error('Google Sheets logging error:', sheetError);
+        }
+      }
+
       showStatus(
         'Thank you. Your enquiry has been submitted. Your reference is ' + reference +
         '. We will review the scope and contact you by email with the service, price and expected delivery time.',
@@ -98,8 +106,12 @@ if (queryForm) {
       queryForm.reset();
     } catch (error) {
       console.error('InfoNext UK form submission error:', error);
+      const providerDetail = error && error.message && error.message !== 'Submission failed'
+        ? ' Submission service message: ' + error.message
+        : '';
       showStatus(
-        'We could not submit the form just now. If this is the first test, please check hello@infonextuk.co.uk (including spam) for the one-time FormSubmit activation email, activate the form, then try again. If it is already activated, please use the WhatsApp button and we will investigate.',
+        'We could not submit the form just now.' + providerDetail +
+        ' Please try once more. If it still fails, use the WhatsApp button while we investigate.',
         'error'
       );
     } finally {
