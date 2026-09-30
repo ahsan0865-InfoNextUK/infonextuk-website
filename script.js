@@ -86,16 +86,16 @@ if (queryForm) {
       // Save the same enquiry to the Google Sheets dashboard separately.
       // Using a no-cors text POST avoids cross-origin preflight issues with Apps Script.
       if (GOOGLE_SHEETS_WEBHOOK) {
-        try {
-          await fetch(GOOGLE_SHEETS_WEBHOOK, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-            body: JSON.stringify(payload)
-          });
-        } catch (sheetError) {
+        // Do not make the customer wait for the dashboard update.
+        fetch(GOOGLE_SHEETS_WEBHOOK, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch((sheetError) => {
           console.error('Google Sheets logging error:', sheetError);
-        }
+        });
       }
 
       showStatus(
